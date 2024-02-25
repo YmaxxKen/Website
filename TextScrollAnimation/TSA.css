@@ -1,0 +1,73 @@
+body {
+	display: grid;
+	place-items: center;
+	min-height: 200vh;
+	background: hsl(0 0% 0%);
+	color: hsl(0 0% 98%);
+	font-family:  "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+}
+::-webkit-scrollbar {
+	background: transparent;
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #3c3f58;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+section {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	display: grid;
+	justify-content: start;
+	align-content: center;
+	translate: -50% 0;
+	height: 100vh;
+	width: 600px;
+	max-width: calc(100% - 4rem);
+	gap: 1rem;
+}
+
+:is(p) {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	font-size: clamp(1rem, 0.75vw + 1rem, 1.25rem);
+}
+:is(p:nth-of-type(2), a) {
+	opacity: 0;
+	animation: fade-in both linear;
+	animation-timeline: scroll(root);
+	animation-range: 75vh 90vh;
+}
+
+p:nth-of-type(2) {
+	--opacity: 0.65;
+}
+@keyframes fade-in {
+	to {
+		opacity: var(--opacity, 1);
+	}
+}
+
+p:nth-of-type(1) {
+	font-size: clamp(1rem, 3vw + 1rem, 2rem);
+	font-weight: 600;
+  background: #1FA2FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ff2f00, #d6ff21, #ff4040);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ec0606, #ff0303, #fbff10); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-background-clip: text;
+	background-position: 50% 0;
+	color: transparent;
+  opacity: 0;
+	animation: move-bg both linear, fade-in both linear;
+	animation-timeline: scroll(root);
+	animation-range: 0 100vh, 40vh 100vh;
+}
+
